@@ -1,19 +1,34 @@
-wordpress:
-    image: wordpress
-    links:
-     - mariadb:mysql
+version: '2'
+volumes:
+  mariadb_data:
+    driver: local
+  wordpress_data:
+    driver: local
+services:
+  mariadb:
+    image: mariadb:10.1
     environment:
-     - WORDPRESS_DB_PASSWORD=ITGA#2018
+      MARIADB_DATABASE: data_wordpress
+      MARIADB_PASSWORD: wordpress_password
+      MARIADB_ROOT_PASSWORD: mariadb_my_root
+      MARIADB_USER: wordpress_user
+    volumes:
+    - mariadb_data:/data
+  wordpress-lb:
+    image: rancher/lb-service-haproxy:v0.7.5
     ports:
-    - 3000:3000/tcp
-    volumes:
-     - ./code:/code
-     - ./html:/var/www/html
-mariadb:
-    image: mariadb
+    - 80:80/tcp
+    labels:
+      io.rancher.container.agent.role: environmentAdmin
+      io.rancher.container.create_agent: 'true'
+  wordpress:
+    image: wordpress
     environment:
-     - MYSQL_ROOT_PASSWORD=<password>
-     - MYSQL_DATABASE=wordpress
+      WORDPRESS_DATABASE_NAME: data_wordpress
+      WORDPRESS_DATABASE_PASSWORD: wordpress_password
+      WORDPRESS_DATABASE_USER: wordpress_user
+      WORDPRESS_PASSWORD: Itga#2018
+      WORDPRESS_USERNAME: admin
     volumes:
-     - ./database:/var/lib/mysql
+    - wordpress_data:/data
  
