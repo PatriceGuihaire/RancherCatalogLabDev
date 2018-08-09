@@ -5,7 +5,7 @@ wordpress:
     environment:
      - WORDPRESS_DB_PASSWORD=ITGA#2018
     ports:
-     - "<server public IP>:80:80"
+    - 3000:3000/tcp
     volumes:
      - ./code:/code
      - ./html:/var/www/html
