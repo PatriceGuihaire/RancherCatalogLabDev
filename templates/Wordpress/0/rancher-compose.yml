@@ -2,9 +2,27 @@
   name: "Wordpress"
   version: "v1"
   description: "BlaBlaBla ceci est une instance de Wordpress"
-  uuid: php-adminer-1
+  uuid: wordpress-ID-1
 
 version: '2'
+.catalog:
+  name: "Wordpress"
+  version: 1.0.0-latest-rancher1
+  description: "Blog tool, publishing platform and CMS"
+  minimum_rancher_version: v1.0.0-rc2
+  questions:
+    - variable: client_port
+      description: "Port to access Wordpress"
+      label: "Client Port"
+      required: true
+      default: "80"
+      type: "int"
+    - variable: db_password
+      description: "Password for database"
+      label: "Password (default: wordpress)"
+      required: true
+      default: "wordpress"
+      type: "password"
 services:
   mariadb:
     scale: 1
