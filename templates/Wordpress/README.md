@@ -1,3 +1,3 @@
-# Worpdress
+# Worpdress LabDev
 
-Instance Wordpress
+Instance Wordpress  LabDev ITGA

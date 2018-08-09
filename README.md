@@ -1,6 +1,6 @@
-# Rancher Community Catalog 
+# LabDev Catalog 
 
-This catalog provides templates created by the community, and they are not maintained or supported by Rancher Labs.
+Ceci est le catalogue d'application et de templacte basé sur un repo public GIT Labdev
 
 # License
 Copyright (c) 2014-2017 [Rancher Labs, Inc.](http://rancher.com)
